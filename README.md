@@ -37,7 +37,7 @@ Ideal for **terraforming**, **digging**, **explosions**, **editor-like sculpting
 - `SaveFullSnapshot` — captures heights, alphamaps, details, and trees
 - `LoadFullSnapshot` — restores a previous terrain state
 
----
+
 
 ## 🧪 Sample Controller
 
@@ -50,13 +50,13 @@ Ideal for **terraforming**, **digging**, **explosions**, **editor-like sculpting
 
 Use it as a **reference or starting point**, not a hard dependency.
 
----
+
 
 ## ⚠️ Notes & Limitations
 - Editing near **terrain borders** may cause visible seams (especially with neighboring terrains).  
   Border stitching is not handled yet.
 
----
+
 
 ## 🧱 Physics / Rigidbody Note
 
