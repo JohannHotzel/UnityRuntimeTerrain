@@ -1175,7 +1175,7 @@ MonoBehaviour:
   mode: 1
   runtimeTerrain: {fileID: 922687099}
   explosionVFX: {fileID: 1365747571}
-  dustVFX: {fileID: 620846859}
+  dustVFX: {fileID: 0}
   debreesVFX: {fileID: 382912609}
   brushRadiusMeters: 5
   heightStrengthMeters: 15
