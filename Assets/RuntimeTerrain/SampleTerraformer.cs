@@ -138,6 +138,9 @@ public class SampleTerraformer : MonoBehaviour
 
             // If RuntimeTerrain uses DelayLOD, this is the right time to sync after a stroke.
             runtimeTerrain.FlushDelayedLOD();
+
+            // Update colliders now that editing is done
+            runtimeTerrain.UpdateTerrainCollider();
         }
 
         // Existing mode gating
@@ -172,6 +175,8 @@ public class SampleTerraformer : MonoBehaviour
                 ApplyRemoveTrees(hit.point);
                 break;
         }
+
+        WakeRigidbodiesInRadius(hit.point, brushRadiusMeters);
     }
 
     // --------------------------------------------------------------------------------
@@ -198,6 +203,23 @@ public class SampleTerraformer : MonoBehaviour
     {
         if (Keyboard.current == null) return false;
         return Keyboard.current.leftShiftKey.isPressed || Keyboard.current.rightShiftKey.isPressed;
+    }
+
+
+    /// <summary>
+    /// Wakes all rigidbodies within the given radius (used after terrain modification).
+    /// </summary>
+    void WakeRigidbodiesInRadius(Vector3 center, float radius)
+    {
+        var cols = Physics.OverlapSphere(center, radius, ~0, QueryTriggerInteraction.Ignore);
+
+        for (int i = 0; i < cols.Length; i++)
+        {
+            var rb = cols[i].attachedRigidbody;
+            if (!rb) continue;
+
+            rb.WakeUp();
+        }
     }
 
     // --------------------------------------------------------------------------------

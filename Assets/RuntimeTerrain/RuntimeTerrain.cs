@@ -717,10 +717,26 @@ public class RuntimeTerrain : MonoBehaviour
     {
         if (!terrain) return;
         //terrain.ApplyDelayedHeightmapModification(); -> Deprecated
-        td.SyncHeightmap();
-
+        td.SyncHeightmap();      
     }
 
-
+    /// <summary>
+    /// Rigidbodies may go to sleep and not notice terrain collider updates.
+    /// As a workaround, we briefly toggle the TerrainCollider to force
+    /// Unity's physics system to rebuild contacts.
+    ///
+    /// This is relatively expensive and should only be used if you are
+    /// not waking nearby rigidbodies manually.
+    /// </summary> 
+    public void UpdateTerrainCollider()
+    {
+        if (!terrain) return;
+        var tc = terrain.GetComponent<TerrainCollider>();
+        if (tc)
+        {
+            tc.enabled = false;
+            tc.enabled = true;
+        }
+    }
 
 }
