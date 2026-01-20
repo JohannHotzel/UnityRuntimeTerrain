@@ -9,7 +9,7 @@ Ideal for **terraforming**, **digging**, **explosions**, **editor-like sculpting
 
 ![Terrain Gif](Images/TerrainGif.gif)
 
-> Demo: *coming soon*
+> Demo: https://www.youtube.com/shorts/OJtpWjD3vbM
 
 ---
 
